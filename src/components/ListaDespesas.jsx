@@ -1,7 +1,7 @@
 import React from "react";
 import ItemDespesa from "./ItemDespesa";
 
-export default function ListaDespesas({ despesas, aoEditar, aoExcluir }) {
+export default function ExpenseList({ despesas, aoEditar, aoExcluir }) {
   if (despesas.length === 0) {
     return <p style={{ textAlign: "center" }}>Nenhuma despesa encontrada.</p>;
   }

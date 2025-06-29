@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import CadastroDespesas from "./components/CadastroDespesas/CadastroDespesas";
 import ExpenseList from "./components/ListaDespesas";
 import ExpenseFilter from "./components/FiltroDespesas";
+import Resumo from "./components/Resumo/Resumo";
 
 export default function App() {
   const [despesas, setDespesas] = useState([]);
@@ -34,9 +35,9 @@ export default function App() {
     <div style={{ maxWidth: 600, margin: "auto", padding: 20 }}>
       <Header />
 
-    
-      <CadastroDespesas tipo="Fixa" onAddDespesa={adicionarDespesa} />
+      <Resumo despesas={despesasFiltradas} />
 
+      <CadastroDespesas tipo="Fixa" onAddDespesa={adicionarDespesa} />
       <CadastroDespesas tipo="Variável" onAddDespesa={adicionarDespesa} />
 
       <ExpenseFilter
@@ -48,8 +49,8 @@ export default function App() {
 
       <ExpenseList
         despesas={despesasFiltradas}
-        onEdit={editarDespesa}
-        onDelete={excluirDespesa}
+        aoEditar={editarDespesa}
+        aoExcluir={excluirDespesa}
       />
     </div>
   );

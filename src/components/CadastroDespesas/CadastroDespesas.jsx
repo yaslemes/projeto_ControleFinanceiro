@@ -36,54 +36,52 @@ const CadastroDespesas = ({ tipo, onAddDespesa }) => {
       <h3>{tipo}</h3>
       <form onSubmit={handleSubmit}>
         <div>
-          <div>
-            <label>Descrição do gasto</label>
-            <input
-              type="text"
-              value={descricao}
-              onChange={(e) => setDescricao(e.target.value)}
-              placeholder="Digite a descrição"
-            />
-          </div>
-          <div>
-            <label>Valor (R$)</label>
-            <input
-              type="number"
-              step="0.01"
-              value={valor}
-              placeholder="0,00"
-              onChange={(e) => setValor(e.target.value)}
-            />
-          </div>
+          <label>Descrição do gasto</label>
+          <input
+            type="text"
+            value={descricao}
+            onChange={(e) => setDescricao(e.target.value)}
+            placeholder="Digite a descrição"
+          />
         </div>
         <div>
-          <div>
-            <select
-              value={categoria}
-              onChange={(e) => setCategoria(e.target.value)}
-            >
-              {categorias.map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label="Data"
-                value={data}
-                onChange={(newValue) => setData(newValue)}
-                slotProps={{
-                  textField: {
-                    fullWidth: true,
-                    size: 'small',
-                  },
-                }}
-              />
-            </LocalizationProvider>
-          </div>
+          <label>Valor (R$)</label>
+          <input
+            type="number"
+            step="0.01"
+            value={valor}
+            placeholder="0,00"
+            onChange={(e) => setValor(e.target.value)}
+          />
         </div>
-        <Button type="submit">+ Adicionar Gasto</Button>
+        <div>
+          <select
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
+          >
+            {categorias.map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="Data"
+              value={data}
+              onChange={(newValue) => setData(newValue)}
+              slotProps={{
+                textField: {
+                  fullWidth: true,
+                  size: 'small',
+                },
+              }}
+            />
+          </LocalizationProvider>
+        </div>
+        <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
+          + Adicionar Gasto
+        </Button>
       </form>
     </div>
   );
