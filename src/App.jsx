@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import CadastroDespesas from "./components/CadastroDespesas/CadastroDespesas";
 import ExpenseList from "./components/ListaDespesas";
@@ -6,9 +6,17 @@ import ExpenseFilter from "./components/FiltroDespesas";
 import Resumo from "./components/Resumo/Resumo";
 
 export default function App() {
-  const [despesas, setDespesas] = useState([]);
+  const [despesas, setDespesas] = useState(() => {
+    const despesasSalvas = localStorage.getItem("despesas");
+    return despesasSalvas ? JSON.parse(despesasSalvas) : [];
+  });
+
   const [filtroCategoria, setFiltroCategoria] = useState("");
   const [filtroTipo, setFiltroTipo] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("despesas", JSON.stringify(despesas));
+  }, [despesas]);
 
   const adicionarDespesa = (novaDespesa) => {
     setDespesas((prev) => [...prev, novaDespesa]);

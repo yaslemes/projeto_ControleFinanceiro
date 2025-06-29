@@ -12,7 +12,7 @@ export default function ExpenseList({ despesas, aoEditar, aoExcluir }) {
         <ItemDespesa
           key={despesa.id}
           despesa={despesa}
-          aoEditar={() => aoEditar(despesa)}
+          aoEditar={aoEditar} // passa direto a função
           aoExcluir={() => aoExcluir(despesa.id)}
         />
       ))}
