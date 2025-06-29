@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import Header from "./components/Header/Header";
+import CadastroDespesas from "./components/CadastroDespesas/CadastroDespesas";
 import ExpenseList from "./components/ListaDespesas";
 import ExpenseFilter from "./components/FiltroDespesas";
 
 export default function App() {
-  const [despesas, setDespesas] = useState([
-    // Pode iniciar vazio ou com despesas de teste
-  ]);
+  const [despesas, setDespesas] = useState([]);
   const [filtroCategoria, setFiltroCategoria] = useState("");
   const [filtroTipo, setFiltroTipo] = useState("");
 
-  const editarDespesa = (despesa) => {
-    
+  const adicionarDespesa = (novaDespesa) => {
+    setDespesas((prev) => [...prev, novaDespesa]);
+  };
+
+  const editarDespesa = (despesaAtualizada) => {
+    setDespesas((prev) =>
+      prev.map((d) => (d.id === despesaAtualizada.id ? despesaAtualizada : d))
+    );
   };
 
   const excluirDespesa = (id) => {
@@ -26,7 +32,12 @@ export default function App() {
 
   return (
     <div style={{ maxWidth: 600, margin: "auto", padding: 20 }}>
-      <h1>Lista de Despesas</h1>
+      <Header />
+
+    
+      <CadastroDespesas tipo="Fixa" onAddDespesa={adicionarDespesa} />
+
+      <CadastroDespesas tipo="Variável" onAddDespesa={adicionarDespesa} />
 
       <ExpenseFilter
         categoria={filtroCategoria}
