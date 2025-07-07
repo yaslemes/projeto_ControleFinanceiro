@@ -79,8 +79,4 @@ Ferramentas utilizadas no planejamento e prototipagem do projeto:
 
 ---
 
-## 📄 [Relatório do Projeto](relatorio.md)
-
----
-
 > 💡 Este projeto visa o desenvolvimento de habilidades em React, UI/UX responsivo, organização de componentes e análise de dados financeiros com gráficos.
